@@ -34,7 +34,7 @@ const EventCard = ({
         className={`flex items-center p-3 shadow-md rounded-lg border ${
           count > 1
             ? "bg-sky-100 border-none cursor-pointer z-10 "
-            : "bg-white border-slate-200 z-10 "
+            : "bg-white border-slate-200 z-10 cursor-pointer "
         } `}
         onClick={() => {
           if (count > 1) {
