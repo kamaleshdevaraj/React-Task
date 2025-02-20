@@ -39,7 +39,11 @@ const MeetingLinkModel = ({
           <div className="grid grid-cols-2 gap-4">
             <div className="border-r border-neutral-300  pr-3 flex flex-col gap-3">
               <p className="text-sm font-semibold">
-                Interview With: <span className="font-normal">{}</span>
+                Interview With:{" "}
+                <span className="font-normal">
+                  {interviewDetails?.user_det?.candidate?.candidate_firstName ??
+                    singleEventData[0].user_det?.candidate?.candidate_firstName}
+                </span>
               </p>
               <p className="text-sm font-semibold">
                 Position:{" "}
