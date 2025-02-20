@@ -44,10 +44,11 @@ export default function WeekCalendar({ eventsData, selectedDate }: Props) {
             return (
               <div
                 key={day.toString()}
-                className="border-l border-slate-200 px-2 h-25 relative "
+                className="border-l border-slate-200  h-25 relative "
               >
                 {dayEvents.length > 0 && (
                   <EventCard
+                    weeklywidth
                     title={dayEvents[0]?.user_det?.job_id?.jobRequest_Title}
                     interviewer={`${
                       dayEvents[0]?.user_det?.handled_by?.firstName ?? "-"

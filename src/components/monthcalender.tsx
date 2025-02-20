@@ -61,7 +61,7 @@ export default function MonthlyCalendar({ eventsData, selectedDate }: Props) {
                 {day.format("DD")}
               </div>
               {dayEvents.length > 0 && (
-                <div className="absolute top-10 left-0">
+                <div className="absolute top-12 left-0">
                   <EventCard
                     monthlywidth
                     title={dayEvents[0]?.user_det?.job_id?.jobRequest_Title}
