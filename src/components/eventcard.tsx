@@ -35,8 +35,7 @@ const EventCard = ({
             ? "bg-sky-100 border-none cursor-pointer z-10 "
             : "bg-white border-slate-200 z-10 "
         } `}
-        // onClick={() => count > 1 && setHover(!hover)}
-        onMouseEnter={() => count > 1 && setHover(true)}
+        onClick={() => count > 1 && setHover(true)}
       >
         <div className="w-3 bg-blue-600 h-20"></div>
         <div className="ml-3">
@@ -118,7 +117,9 @@ const EventCard = ({
         <MeetingLinkModel
           id={number ?? 0}
           isOpen={openModel}
-          onClose={() => setOpenModel(false)}
+          onClose={() => {
+            setOpenModel(false), setHover(true);
+          }}
           interviewDetails={data}
         />
       ) : null}
