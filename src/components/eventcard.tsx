@@ -99,7 +99,7 @@ const EventCard = ({
                       <p className="text-xs text-black-500 border-r px-1 ml-2">
                         Date: {dayjs(event?.start)?.format("DD-MMM-YYYY")}
                       </p>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs text-black-500">
                         Time:
                         {`${dayjs(event.start).format("hhA")} - ${dayjs(
                           event.end
