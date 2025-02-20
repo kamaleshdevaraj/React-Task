@@ -7,12 +7,19 @@ type props = {
   isOpen: boolean;
   onClose: (value: React.SetStateAction<boolean>) => void;
   interviewDetails: any;
+  singleEventData: any;
   id: number;
 };
 
-const MeetingLinkModel = ({ isOpen, onClose, interviewDetails, id }: props) => {
+const MeetingLinkModel = ({
+  isOpen,
+  onClose,
+  interviewDetails,
+  id,
+  singleEventData,
+}: props) => {
   if (!isOpen) return null;
-
+  console.log(singleEventData, "singleEventData");
   return (
     <div
       className="fixed inset-0  bg-opacity-50 flex items-center justify-center z-50"
@@ -35,13 +42,14 @@ const MeetingLinkModel = ({ isOpen, onClose, interviewDetails, id }: props) => {
                 Interview With:{" "}
                 <span className="font-normal">
                   {interviewDetails?.user_det?.candidate?.candidate_firstName ??
-                    "-"}
+                    singleEventData[0].user_det?.candidate?.candidate_firstName}
                 </span>
               </p>
               <p className="text-sm font-semibold">
                 Position:{" "}
                 <span className="font-normal">
-                  {interviewDetails?.job_id?.jobRequest_Role ?? "-"}
+                  {interviewDetails?.job_id?.jobRequest_Role ??
+                    singleEventData[0]?.job_id?.jobRequest_Role}
                 </span>
               </p>
               <p className="text-sm font-semibold">
@@ -50,16 +58,19 @@ const MeetingLinkModel = ({ isOpen, onClose, interviewDetails, id }: props) => {
               <p className="text-sm font-semibold">
                 Interview Date:{" "}
                 <span className="font-normal">
-                  {dayjs(interviewDetails?.start)?.format("DD-MMM-YYYY") ?? "-"}
+                  {dayjs(interviewDetails?.start)?.format("DD-MMM-YYYY") ??
+                    dayjs(singleEventData[0]?.start)?.format("DD-MMM-YYYY")}
                 </span>
               </p>
               <p className="text-sm font-semibold">
                 Interview Time:{" "}
                 <span className="font-normal">
-                  {" "}
                   {`${dayjs(interviewDetails?.start).format("hhA")} - ${dayjs(
                     interviewDetails?.end
-                  ).format("hhA")}`}
+                  ).format("hhA")}` ||
+                    `${dayjs(singleEventData[0]?.start).format(
+                      "hhA"
+                    )} - ${dayjs(singleEventData[0]?.end).format("hhA")}`}
                 </span>
               </p>
               <p className="text-sm font-semibold">
@@ -92,7 +103,9 @@ const MeetingLinkModel = ({ isOpen, onClose, interviewDetails, id }: props) => {
               <button
                 className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium cursor-pointer"
                 onClick={() =>
-                  window.open(interviewDetails?.link ?? "www.google.com")
+                  window.open(
+                    interviewDetails?.link || singleEventData[0]?.link
+                  )
                 }
               >
                 JOIN

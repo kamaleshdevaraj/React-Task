@@ -23,9 +23,10 @@ const EventCard = ({
   monthlywidth,
 }: props) => {
   const [openModel, setOpenModel] = useState<boolean>(false);
-  const [hover, setHover] = useState<boolean>(false);
+  const [showListModel, setShowListModel] = useState<boolean>(false);
   const [data, setData] = useState();
   const [number, setNumber] = useState<number>();
+  const [singleEventData, setSingleEventData] = useState();
 
   return (
     <div className={`relative ${monthlywidth ? "w-50 ml-1" : "w-64"} `}>
@@ -35,7 +36,14 @@ const EventCard = ({
             ? "bg-sky-100 border-none cursor-pointer z-10 "
             : "bg-white border-slate-200 z-10 "
         } `}
-        onClick={() => count > 1 && setHover(true)}
+        onClick={() => {
+          if (count > 1) {
+            setShowListModel(true);
+          } else if (count == 1) {
+            setOpenModel(true);
+            setSingleEventData(multipleEvents);
+          }
+        }}
       >
         <div className="w-3 bg-blue-600 h-20"></div>
         <div className="ml-3">
@@ -53,10 +61,10 @@ const EventCard = ({
       </div>
       <OutsideClickHandler
         onOutsideClick={() => {
-          setHover(false);
+          setShowListModel(false);
         }}
       >
-        {hover && count > 1 && (
+        {showListModel && count > 1 && (
           <div
             className={`absolute top-0 ${
               monthlywidth ? "left-54" : " left-67"
@@ -100,7 +108,7 @@ const EventCard = ({
                         Date: {dayjs(event?.start)?.format("DD-MMM-YYYY")}
                       </p>
                       <p className="text-xs text-black-500">
-                        Time:
+                        Time:{" "}
                         {`${dayjs(event.start).format("hhA")} - ${dayjs(
                           event.end
                         ).format("hhA")}`}
@@ -118,9 +126,10 @@ const EventCard = ({
           id={number ?? 0}
           isOpen={openModel}
           onClose={() => {
-            setOpenModel(false), setHover(true);
+            setOpenModel(false), setShowListModel(true);
           }}
           interviewDetails={data}
+          singleEventData={singleEventData}
         />
       ) : null}
     </div>
