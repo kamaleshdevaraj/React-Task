@@ -39,11 +39,7 @@ const MeetingLinkModel = ({
           <div className="grid grid-cols-2 gap-4">
             <div className="border-r border-neutral-300  pr-3 flex flex-col gap-3">
               <p className="text-sm font-semibold">
-                Interview With:{" "}
-                <span className="font-normal">
-                  {interviewDetails?.user_det?.candidate?.candidate_firstName ??
-                    singleEventData[0].user_det?.candidate?.candidate_firstName}
-                </span>
+                Interview With: <span className="font-normal">{}</span>
               </p>
               <p className="text-sm font-semibold">
                 Position:{" "}
@@ -53,7 +49,12 @@ const MeetingLinkModel = ({
                 </span>
               </p>
               <p className="text-sm font-semibold">
-                Created By: <span className="font-normal">-</span>
+                Created By:{" "}
+                <span className="font-normal">
+                  {interviewDetails?.user_det?.handled_by?.firstName ??
+                    singleEventData[0].user_det?.handled_by?.firstName ??
+                    "-"}
+                </span>
               </p>
               <p className="text-sm font-semibold">
                 Interview Date:{" "}
