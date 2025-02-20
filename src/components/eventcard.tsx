@@ -36,7 +36,7 @@ const EventCard = ({
         monthlywidth
           ? "w-48 ml-1 -top-1"
           : weeklywidth
-          ? "w-40 ml-1 -left-0  -top-0"
+          ? "w-42.5 ml-1 -left-0  -top-0"
           : "w-60 top-0"
       } `}
     >
@@ -74,7 +74,7 @@ const EventCard = ({
               {title}
             </p>
           )}
-          {weeklywidth ? (
+          {weeklywidth || count < 1 ? (
             <p style={{ fontSize: "10px", fontWeight: "bold" }}>
               interviewer:{" "}
               <span style={{ fontSize: "10px", fontWeight: "bold" }}>
@@ -120,7 +120,7 @@ const EventCard = ({
         {count > 1 && (
           <div
             className={`${
-              weeklywidth ? "w-2 h-2 absolute -top-2 -right-2" : ""
+              weeklywidth ? "w-1.6 h-1.9 absolute -top-2 -right-2" : ""
             }absolute -top-2 -right-2 bg-yellow-500 text-black text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full`}
           >
             {count}
