@@ -14,11 +14,23 @@ const Calendar: React.FC = () => {
   const [data, setData] = useState([]);
 
   const handlePrevDay = () => {
-    setSelectedDate(selectedDate.subtract(1, "day"));
+    if (select === 0) {
+      setSelectedDate(selectedDate.subtract(1, "day"));
+    } else if (select === 1) {
+      setSelectedDate(selectedDate.subtract(1, "week"));
+    } else if (select === 2) {
+      setSelectedDate(selectedDate.subtract(1, "month"));
+    }
   };
 
   const handleNextDay = () => {
-    setSelectedDate(selectedDate.add(1, "day"));
+    if (select === 0) {
+      setSelectedDate(selectedDate.add(1, "day"));
+    } else if (select === 1) {
+      setSelectedDate(selectedDate.add(1, "week"));
+    } else if (select === 2) {
+      setSelectedDate(selectedDate.add(1, "month"));
+    }
   };
 
   useEffect(() => {
