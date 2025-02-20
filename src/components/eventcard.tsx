@@ -22,7 +22,6 @@ const EventCard = ({
   count = 1,
   multipleEvents,
   monthlywidth,
-  weeklywidth,
 }: props) => {
   const [openModel, setOpenModel] = useState<boolean>(false);
   const [showListModel, setShowListModel] = useState<boolean>(false);
