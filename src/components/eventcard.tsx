@@ -12,6 +12,7 @@ type props = {
   events: any[];
   multipleEvents: any;
   monthlywidth?: boolean;
+  weeklywidth?: boolean;
 };
 
 const EventCard = ({
@@ -21,6 +22,7 @@ const EventCard = ({
   count = 1,
   multipleEvents,
   monthlywidth,
+  weeklywidth,
 }: props) => {
   const [openModel, setOpenModel] = useState<boolean>(false);
   const [showListModel, setShowListModel] = useState<boolean>(false);
@@ -29,7 +31,7 @@ const EventCard = ({
   const [singleEventData, setSingleEventData] = useState();
 
   return (
-    <div className={`relative ${monthlywidth ? "w-50 ml-1" : "w-64"} `}>
+    <div className={`relative ${monthlywidth ? "w-48 ml-1 -top-2" : "w-64"} `}>
       <div
         className={`flex items-center p-3 shadow-md rounded-lg border ${
           count > 1
@@ -47,11 +49,42 @@ const EventCard = ({
       >
         <div className="w-3 bg-blue-600 h-20"></div>
         <div className="ml-3">
-          <p className="text-sm font-semibold text-black-400">{title}</p>
-          <p className="text-sm font-semibold text-black-400">
-            Interviewer: {interviewer}
+          <p
+            className={
+              monthlywidth
+                ? "text-sm/6 font-semibold text-black-400"
+                : "text-sm font-semibold text-black-400"
+            }
+          >
+            {title}
           </p>
-          <p className="text-sm font-semibold text-black-400">Time: {time}</p>
+          <p
+            className={
+              monthlywidth
+                ? "text-sm/6 font-semibold text-black-400"
+                : "text-sm font-semibold text-black-400"
+            }
+          >
+            Interviewer:{" "}
+            {
+              <span
+                className={
+                  monthlywidth ? "text-sm/6 font-semibold text-black-400" : ""
+                }
+              >
+                {interviewer}
+              </span>
+            }
+          </p>
+          <p
+            className={
+              monthlywidth
+                ? "text-sm/6 font-semibold text-black-400"
+                : "text-sm font-semibold text-black-400"
+            }
+          >
+            Time: {time}
+          </p>
         </div>
         {count > 1 && (
           <div className="absolute -top-2 -right-2 bg-yellow-500 text-black text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full">

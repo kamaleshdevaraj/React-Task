@@ -30,7 +30,7 @@ export default function WeekCalendar({ eventsData, selectedDate }: Props) {
           key={hour}
           className="grid grid-cols-8 border-t border-slate-200 py-3"
         >
-          <div className="text-right text-sm text-sky-500 pr-2">
+          <div className="text-center text-sm text-sky-500 pr-2 relative top-22">
             {hour % 12 === 0 ? 12 : hour % 12} {hour < 12 ? "AM" : "PM"}
           </div>
 
@@ -44,7 +44,7 @@ export default function WeekCalendar({ eventsData, selectedDate }: Props) {
             return (
               <div
                 key={day.toString()}
-                className="border-l border-slate-200 px-2  h-25 relative"
+                className="border-l border-slate-200 px-2 h-25 relative "
               >
                 {dayEvents.length > 0 && (
                   <EventCard

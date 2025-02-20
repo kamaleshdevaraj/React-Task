@@ -15,18 +15,17 @@ export default function DayCalender({ eventsData, selectedDate }: props) {
   return (
     <div className="border border-slate-200 rounded-lg shadow-md">
       {[...Array(24)].map((_, hour) => {
-        const hourEvents = events?.filter((e) =>
-          Number(dayjs(e.start).hour() === hour)
+        const hourEvents = events?.filter(
+          (e) => Number(dayjs(e.start).hour()) === hour
         );
+
         return (
-          <div
-            key={hour}
-            className="border-t border-slate-200 py-5 flex items-center"
-          >
-            <span className="w-16 text-right text-sm text-sky-500 ">
+          <div key={hour} className="border-t border-slate-200 flex">
+            <span className="w-22 text-sm text-sky-500 text-center pr-2 relative top-22">
               {hour % 12 === 0 ? 12 : hour % 12} {hour < 12 ? "AM" : "PM"}
             </span>
-            <div className="flex-1 border-l ml-3 p-2 h-25 border-slate-200 relative">
+
+            <div className="flex-1 border-l border-slate-200 pl-3 p-2 h-29 relative">
               {hourEvents?.length ? (
                 <EventCard
                   title={hourEvents?.[0]?.user_det?.job_id?.jobRequest_Title}
